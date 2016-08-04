@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{D1081029-2369-4DAA-9F33-2353C5C9ED02}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ionide.Fake</RootNamespace>
-    <AssemblyName>Ionide.Fake</AssemblyName>
+    <RootNamespace>TddStudio.VSCode</RootNamespace>
+    <AssemblyName>TddStudio.VSCode</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
-    <Compile Include="fake.fs" />
+    <Compile Include="package.fs" />
     <Compile Include="main.fs" />
     <None Include="vscode-bindings.fsx" />
     <None Include="paket.references" />

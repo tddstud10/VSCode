@@ -1,4 +1,4 @@
-﻿module Ionide.VSCode.Generator
+﻿module TddStud10.VSCode.Generator
 
 // --------------------------------------------------------------------------------------
 // Load the F# implementation and specify parameters for the translator
@@ -81,4 +81,4 @@ let translateModules (typ : System.Type) fileName =
 // Entry point - do stuff!
 // --------------------------------------------------------------------------------------
 
-do translateModules typeof<Ionide.VSCode.Fake> "../release/fake.js"
+do translateModules typeof<TddStud10.VSCode.Package> "../release/tddstud10.js"

@@ -1,5 +1,5 @@
 [<ReflectedDefinition>]
-module Ionide.VSCode
+module TddStud10.VSCode
 
 open System
 open System.Text.RegularExpressions
@@ -12,7 +12,7 @@ open FunScript.TypeScript.vscode
 open Ionide
 open Ionide.VSCode
 
-module FakeService =
+module PackageService =
     type BuildData = {Name : string; Start : DateTime; mutable End : DateTime option; Process : ChildProcess}
 
     let mutable private linuxPrefix = ""
@@ -93,10 +93,10 @@ module FakeService =
         do loadParameters ()
         do startBuild ""
 
-type Fake() =
+type Package() =
     member x.activate(state:obj) =
         let t = workspace.Globals.rootPath
-        commands.Globals.registerCommand("fake.fakeBuild", FakeService.buildHandle |> unbox ) |> ignore
-        commands.Globals.registerCommand("fake.cancelBuild", FakeService.cancelHandle |> unbox) |> ignore
-        commands.Globals.registerCommand("fake.buildDefault", FakeService.defaultHandle |> unbox) |> ignore
+        commands.Globals.registerCommand("tddStud10.fakeBuild", PackageService.buildHandle |> unbox ) |> ignore
+        commands.Globals.registerCommand("tddStud10.cancelBuild", PackageService.cancelHandle |> unbox) |> ignore
+        commands.Globals.registerCommand("tddStud10.buildDefault", PackageService.defaultHandle |> unbox) |> ignore
         ()

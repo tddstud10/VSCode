@@ -1,41 +1,43 @@
-#Ionide-VSCode: FAKE
+[![Build status](https://ci.appveyor.com/api/projects/status/XXXXXX/branch/master?svg=true)](https://ci.appveyor.com/project/parthopdas/tddstud10/branch/master)
+[![Join the chat at https://gitter.im/parthopdas/tddstud10](https://badges.gitter.im/parthopdas/tddstud10.svg)](https://gitter.im/parthopdas/tddstud10?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-It's part of [Ionide](http://ionide.io) plugin suite.
-Using FAKE (F# Make) from VS Code.
+> **Test Driven Development Studio - An environment for practicing Kent Beck style Test Driven Development.**
+>
+>  Copyright (c) 2015-3015, The TddStud10 Team
+>
+>  Licensed under the Apache License, Version 2.0 (the "License");
+>  you may not use this file except in compliance with the License.
+>  You may obtain a copy of the License at
+>
+>      http://www.apache.org/licenses/LICENSE-2.0
+>
+>  Unless required by applicable law or agreed to in writing, software
+>  distributed under the License is distributed on an "AS IS" BASIS,
+>  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+>  See the License for the specific language governing permissions and
+>  limitations under the License.
 
-[![Join the chat at https://gitter.im/ionide/ionide-project](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/ionide/ionide-project?utm_source=share-link&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) --  [Need Help? You can find us on Gitter](https://gitter.im/ionide/ionide-project)
+# Goals, Intentions, Guidelines
 
-## Features
+  - Environment for practicing Kent Beck style TDD [F.I.R.S.T. Unit Tests, fast builds, No Mocks, Hexagonal architecture]
+  - Open source alternative to nCrunch
+  - Eventually not just unit tests - but a collection of facilities that makes TDD a joy! e.g. TODO list, hotspot analysis, etc.
 
-- Run any build target defined in Your project's FAKE build script
+---
 
-## Configuration
+v clone project
+- change files, ids
+- test load in vscode -> works just like fake
+- convert to fable
+- enable, disable menu items
+- on enable, spawn tdds process, on disable [?kill?]
+- run tdds, get version from rest api, print to [?toolwindow?]
+- while restapi, show spinner
+- publish as private beta?
+- fillup readmd.md
+- CI [XXXXXX in readme.md]
 
-`ionide-fake` allows the user to override the default conventions used to find and run FAKE builds. To do so You need to create an `.ionide` file in the root folder of Your project opened by Atom. The configuration file uses the [TOML](https://github.com/toml-lang/toml) language.
-
-Here is the default configuration values used if the `.ionide` file doesn't exist or some entry is missing:
-
-```TOML
-[Fake]
-linuxPrefix = "mono"
-command = "build.cmd"
-build = "build.fsx"
-```
-
-* Linux Prefix - command used as prefix on Linux / Mac - usually `sh` or `mono`
-
-* Command - command executed as build taking build name as parameter - usually `build.cmd`, `build.sh`, `build.ps1`
-
-* Build - FAKE build script, which is parsed to obtain list of possible builds - usually `build.fsx`, `fake.fsx`
-
-## PATH settings
-
-* In case of using Mono version, `mono` must be in PATH.
-
-## Contributing and copyright
-
-The project is hosted on [GitHub](https://github.com/ionide/ionide-vscode-fake) where you can [report issues](https://github.com/ionide/ionide-vscode-fake/issues), fork
-the project and submit pull requests.
-
-The library is available under [MIT license](https://github.com/ionide/ionide-vscode-fake/blob/master/LICENSE.md), which allows modification and
-redistribution for both commercial and non-commercial purposes.
+later
+fix icon
+C#, F# context
+solution loaded context

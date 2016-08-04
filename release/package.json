@@ -1,63 +1,62 @@
 {
-	"name": "Ionide-FAKE",
-	"version": "1.1.0",
-	"publisher": "Ionide",
-	"description": "FAKE (F# Make) Support",
+	"name": "Test Driven Development Studio",
+	"version": "0.0.1",
+	"publisher": "The TddStud10 Team",
+	"description": "An environment for practicing Kent Beck style Test Driven Development.",
 	"categories":[
 		 "Other"
 	],
 	"license":"SEE LICENSE IN LICENSE.md",
 	"icon": "images/logo.png",
 	"bugs": {
-		"url": "https://github.com/ionide/ionide-vscode-fake/issues"
+		"url": "https://github.com/parthopdas/tddstud10-vscode/issues"
 	},
-	"homepage": "http://ionide.io",
+	"homepage": "https://github.com/parthopdas/tddstud10",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ionide/ionide-vscode-fake.git"
+		"url": "https://github.com/parthopdas/tddstud10-vscode.git"
 	},
 	"engines": {
 		"vscode": "^0.10.0"
 	},
-	"main": "./fake",
+	"main": "./package",
 	"contributes": {
 		"commands": [{
-			"command": "fake.fakeBuild",
-			"title": "FAKE: Build"
+			"command": "tddStud10.fakeBuild",
+			"title": "TddStud10: Build"
 		},
 		{
-			"command": "fake.cancelBuild",
-			"title": "FAKE: Cancel"
+			"command": "tddStud10.cancelBuild",
+			"title": "TddStud10: Cancel"
 		},
 		{
-			"command": "fake.buildDefault",
-			"title": "FAKE: Build Default"
+			"command": "tddStud10.buildDefault",
+			"title": "TddStud10: Build Default"
 		}],
 		"outputChannels": [
-			"FAKE"
+			"TddStud10"
 		],
 		"keybindings": [{
-			"command": "fake.buildDefault",
-			"key": "ctrl+f5",
-			"mac": "cmd+f5"
+			"command": "TddStud10.buildDefault",
+			"key": "ctrl+shift+f5",
+			"mac": "cmd+shift+f5"
 		}],
 		"configuration": {
-
 			"type": "object",
-			"title": "FAKE configuration",
+			"title": "TddStud10 configuration",
 			"properties": {
-				"FAKE.autoshow": {
+				"TddStud10.autoshow": {
 					"type": "boolean",
 					"default": true,
-					"description": "Automatically shows FAKE output panel"
+					"description": "Automatically shows TddStud10 output panel"
 				}
 			}
     }
 	},
 	"activationEvents": [
-        "onCommand:fake.fakeBuild",
-		"onCommand:fake.cancelBuild",
-		"onCommand:fake.buildDefault"
+        "onCommand:tddStud10.fakeBuild",
+		"onCommand:tddStud10.cancelBuild",
+		"onCommand:tddStud10.buildDefault"
 	],
 	"devDependencies": {
 		"vscode": "*"

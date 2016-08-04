@@ -16,22 +16,22 @@ open Fake.ZipHelper
 #if MONO
 #else
 #load "src/vscode-bindings.fsx"
-#load "src/fake.fs"
+#load "src/package.fs"
 #load "src/main.fs"
 #endif
 
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitOwner = "ionide"
+let gitOwner = "parthopdas"
 let gitHome = "https://github.com/" + gitOwner
 
 
 // The name of the project on GitHub
-let gitName = "ionide-vscode-fake"
+let gitName = "tddstud10-vscode"
 
 // The url for the raw files hosted
-let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/ionide"
+let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/parthopdas"
 
 
 // Read additional information from the release notes document
@@ -78,7 +78,7 @@ Target "Clean" (fun _ ->
 
 #if MONO
 Target "BuildGenerator" (fun () ->
-    [ __SOURCE_DIRECTORY__ </> "src" </> "Ionide.Fake.fsproj" ]
+    [ __SOURCE_DIRECTORY__ </> "src" </> "TddStud10.VSCode.fsproj" ]
     |> MSBuildDebug "" "Rebuild"
     |> Log "AppBuild-Output: "
 )
@@ -86,12 +86,12 @@ Target "BuildGenerator" (fun () ->
 Target "RunGenerator" (fun () ->
     (TimeSpan.FromMinutes 5.0)
     |> ProcessHelper.ExecProcess (fun p ->
-        p.FileName <- __SOURCE_DIRECTORY__ </> "src" </> "bin" </> "Debug" </> "Ionide.Fake.exe" )
+        p.FileName <- __SOURCE_DIRECTORY__ </> "src" </> "bin" </> "Debug" </> "TddStud10.VSCode.exe" )
     |> ignore
 )
 #else
 Target "RunScript" (fun () ->
-    Ionide.VSCode.Generator.translateModules typeof<Ionide.VSCode.Fake> (".." </> "release" </> "fake.js")
+    TddStud10.VSCode.Generator.translateModules typeof<TddStud10.VSCode.Package> (".." </> "release" </> "tddstud10.js")
 )
 #endif
 
