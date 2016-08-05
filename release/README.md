@@ -22,3 +22,22 @@
   - Environment for practicing Kent Beck style TDD [F.I.R.S.T. Unit Tests, fast builds, No Mocks, Hexagonal architecture]
   - Open source alternative to nCrunch
   - Eventually not just unit tests - but a collection of facilities that makes TDD a joy! e.g. TODO list, hotspot analysis, etc.
+
+---
+
+v clone project
+- change files, ids
+- test load in vscode -> works just like fake
+- convert to fable
+- enable, disable menu items
+- on enable, spawn tdds process, on disable [?kill?]
+- run tdds, get version from rest api, print to [?toolwindow?]
+- while restapi, show spinner
+- publish as private beta?
+- fillup readmd.md
+- CI [XXXXXX in readme.md]
+
+later
+fix icon
+C#, F# context
+solution loaded context

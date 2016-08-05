@@ -13,12 +13,6 @@ open Fake.ProcessHelper
 open Fake.ReleaseNotesHelper
 open Fake.ZipHelper
 
-#if MONO
-#else
-#load "src/vscode-bindings.fsx"
-#load "src/package.fs"
-#load "src/main.fs"
-#endif
 
 
 // Git configuration (used for publishing documentation in gh-pages branch)
@@ -56,16 +50,22 @@ let run cmd args dir =
 
 let npmTool =
     match isUnix with
-    | true -> "/usr/local/bin/npm"
+    | true -> "npm" // Use the npm that is in PATH
     | _ -> __SOURCE_DIRECTORY__ </> "packages/Npm.js/tools/npm.cmd"
-    
+
 let vsceTool =
     #if MONO
         "vsce"
     #else
         "packages" </> "Node.js" </> "vsce.cmd" |> FullName
     #endif
-    
+
+let codeTool =
+    #if MONO
+        "code"
+    #else
+        ProgramFilesX86  </> "Microsoft VS Code" </> "bin/code.cmd"
+    #endif
 
 // --------------------------------------------------------------------------------------
 // Build the Generator project and run it
@@ -76,24 +76,11 @@ Target "Clean" (fun _ ->
     CopyFiles "release" ["README.md"; "LICENSE.md"; "RELEASE_NOTES.md"]
 )
 
-#if MONO
-Target "BuildGenerator" (fun () ->
-    [ __SOURCE_DIRECTORY__ </> "src" </> "TddStud10.VSCode.fsproj" ]
-    |> MSBuildDebug "" "Rebuild"
-    |> Log "AppBuild-Output: "
+Target "RunScript" (fun () ->
+    run npmTool "install" "release"
+    run npmTool "run build" "release"
 )
 
-Target "RunGenerator" (fun () ->
-    (TimeSpan.FromMinutes 5.0)
-    |> ProcessHelper.ExecProcess (fun p ->
-        p.FileName <- __SOURCE_DIRECTORY__ </> "src" </> "bin" </> "Debug" </> "TddStud10.VSCode.exe" )
-    |> ignore
-)
-#else
-Target "RunScript" (fun () ->
-    TddStud10.VSCode.Generator.translateModules typeof<TddStud10.VSCode.Package> (".." </> "release" </> "tddstud10.js")
-)
-#endif
 
 Target "InstallVSCE" ( fun _ ->
     killProcess "npm"
@@ -103,12 +90,12 @@ Target "InstallVSCE" ( fun _ ->
 Target "SetVersion" (fun _ ->
     let fileName = "./release/package.json"
     let lines =
-        File.ReadAllLines fileName        
+        File.ReadAllLines fileName
         |> Seq.map (fun line ->
             if line.TrimStart().StartsWith("\"version\":") then
-                let indent = line.Substring(0,line.IndexOf("\""))                 
+                let indent = line.Substring(0,line.IndexOf("\""))
                 sprintf "%s\"version\": \"%O\"," indent release.NugetVersion
-            else line) 
+            else line)
     File.WriteAllLines(fileName,lines)
 )
 
@@ -119,18 +106,26 @@ Target "BuildPackage" ( fun _ ->
     |> Seq.iter(MoveFile "./temp/")
 )
 
-Target "PublishToGallery" ( fun _ ->       
+Target "TryPackage"(fun _ ->
+    killProcess "code"
+    run codeTool (sprintf "./temp/TddStud10-VSCode-%s.vsix" release.NugetVersion) ""
+)
+
+
+Target "PublishToGallery" ( fun _ ->
     let token =
         match getBuildParam "vsce-token" with
         | s when not (String.IsNullOrWhiteSpace s) -> s
         | _ -> getUserPassword "VSCE Token: "
-        
+
     killProcess "vsce"
     run vsceTool (sprintf "publish --pat %s" token) "release"
 )
 
 #load "paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
 open Octokit
+
+
 
 Target "ReleaseGitHub" (fun _ ->
     let user =
@@ -153,12 +148,12 @@ Target "ReleaseGitHub" (fun _ ->
 
     Branches.tag "" release.NugetVersion
     Branches.pushTag "" remote release.NugetVersion
-    
+
     let file = !! ("./temp" </> "*.vsix") |> Seq.head
-    
+
     // release on github
     createClient user pw
-    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes 
+    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes
     |> uploadFile file
     |> releaseDraft
     |> Async.RunSynchronously
@@ -169,24 +164,27 @@ Target "ReleaseGitHub" (fun _ ->
 // --------------------------------------------------------------------------------------
 
 Target "Default" DoNothing
+Target "Build" DoNothing
 Target "Release" DoNothing
 
-#if MONO
 "Clean"
-    ==> "BuildGenerator"
-    ==> "RunGenerator"
-    ==> "Default"
-#else
-"Clean"
-    ==> "RunScript"
-    ==> "Default"
-#endif
+==> "RunScript"
+==> "Default"
 
-"Default"
-  ==> "SetVersion"
-  ==> "InstallVSCE"
-  ==> "BuildPackage"
-  ==> "ReleaseGitHub"
-  ==> "PublishToGallery"
-  ==> "Release"
+"Clean"
+==> "RunScript"
+==> "Build"
+
+"Build"
+==> "SetVersion"
+==> "InstallVSCE"
+==> "BuildPackage"
+==> "ReleaseGitHub"
+==> "PublishToGallery"
+==> "Release"
+
+
+"BuildPackage"
+==> "TryPackage"
+
 RunTargetOrDefault "Default"
