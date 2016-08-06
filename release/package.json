@@ -1,8 +1,8 @@
 {
-  "name": "TddStud10",
+  "name": "TddStud10-VSCode",
   "version": "0.0.1",
-  "publisher": "The TddStud10 Team",
-  "description": "An environment for practicing Kent Beck style Test Driven Development.",
+  "publisher": "TddStud10",
+  "description": "Test Driven Development Studio - An environment for practicing Kent Beck style Test Driven Development.",
   "categories": [
     "Other"
   ],
@@ -19,20 +19,16 @@
   "engines": {
     "vscode": "^0.10.0"
   },
-  "main": "./package",
+  "main": "./tddstud10",
   "contributes": {
     "commands": [
       {
-        "command": "tddStud10.fakeBuild",
-        "title": "TddStud10: Build"
+        "command": "tddstud10.Enable",
+        "title": "TddStud10: Enable"
       },
       {
-        "command": "tddStud10.cancelBuild",
-        "title": "TddStud10: Cancel"
-      },
-      {
-        "command": "tddStud10.buildDefault",
-        "title": "TddStud10: Build Default"
+        "command": "tddStud10.Disable",
+        "title": "TddStud10: Disable"
       }
     ],
     "outputChannels": [
@@ -40,30 +36,37 @@
     ],
     "keybindings": [
       {
-        "command": "TddStud10.buildDefault",
-        "key": "ctrl+shift+f5",
-        "mac": "cmd+shift+f5"
+        "command": "tddstud10.Enable",
+        "key": "ctrl+shift+alt+E",
+        "mac": "ctrl+shift+alt+E"
+      },
+      {
+        "command": "tddstud10.Enable",
+        "key": "ctrl+shift+alt+D",
+        "mac": "ctrl+shift+alt+D"
       }
     ],
     "configuration": {
       "type": "object",
       "title": "TddStud10 configuration",
       "properties": {
-        "TddStud10.autoshow": {
+        "FSharp.logToConsole": {
           "type": "boolean",
-          "default": true,
-          "description": "Automatically shows TddStud10 output panel"
+          "default": false,
+          "description": "Send TddStud10 logs to the developer tools console"
         }
       }
     }
   },
   "activationEvents": [
-    "onCommand:tddStud10.fakeBuild",
-    "onCommand:tddStud10.cancelBuild",
-    "onCommand:tddStud10.buildDefault"
+    "onLanguage:fsharp",
+    "onLanguage:csharp"
+  ],
+  "extensionDependencies": [
+    "vscode.fsharp"
   ],
   "scripts": {
-    "build": "fable ../src/TddStud10.VSCode.fsproj -s -o ../release -m commonjs"
+    "build": "fable ../src/TddStud10.VSCode.fsproj -s -o ../release -m commonjs --verbose"
   },
   "dependencies": {
     "axios": "^0.12.0",

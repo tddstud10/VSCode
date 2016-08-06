@@ -1,4 +1,6 @@
-paket-files
+release/bin
+release/bin_ff
+release/bin_forge
 
 # Logs
 logs
@@ -33,6 +35,7 @@ Test/
 Test/obj/
 Test/bin/
 .paket/paket.exe
+paket-files
 packages
 Test/Script.fsx
 Test/Script.fsx
@@ -54,12 +57,15 @@ src/fsharp/lib/fsharp.js
 src/atom-fsharp/lib/fsharp.js
 /temp/release
 src/atom-fsharp/bin-fantomas/
+release/syntaxes
+release/templates
 
 temp
 .fake
 .vs
 *.js
-.vscode
-build.fsx.orig
+*.js.map
+.orig
 release.cmd
 paket-files
+issueList.md

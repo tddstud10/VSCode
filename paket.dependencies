@@ -1,11 +1,9 @@
 source https://nuget.org/api/v2
 
-git https://github.com/ionide/ionide-vscode-helpers.git master build:"build.cmd"
-
 nuget FAKE
 nuget Npm.js
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx
-github Ionide/ionide-vscode-helpers:fable Fable.Import.VSCode.fs
-github Ionide/ionide-vscode-helpers:fable Helpers.fs
-github Ionide/ionide-vscode-helpers:fable Fable.Import.Axios.fs
+github Ionide/ionide-vscode-helpers Fable.Import.VSCode.fs
+github Ionide/ionide-vscode-helpers Helpers.fs
+github Ionide/ionide-vscode-helpers Fable.Import.Axios.fs

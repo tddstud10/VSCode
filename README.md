@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/XXXXXX/branch/master?svg=true)](https://ci.appveyor.com/project/parthopdas/tddstud10/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/u896lshovkdh1cwc/branch/master?svg=true)](https://ci.appveyor.com/project/parthopdas/tddstud10-vscode/branch/master)
 [![Join the chat at https://gitter.im/parthopdas/tddstud10](https://badges.gitter.im/parthopdas/tddstud10.svg)](https://gitter.im/parthopdas/tddstud10?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > **Test Driven Development Studio - An environment for practicing Kent Beck style Test Driven Development.**
@@ -23,21 +23,22 @@
   - Open source alternative to nCrunch
   - Eventually not just unit tests - but a collection of facilities that makes TDD a joy! e.g. TODO list, hotspot analysis, etc.
 
+
 ---
+- TODO
+  - [x] clone project
+  - [x] CI [XXXXXX in readme.md]
+  - [x] change files, ids
+  - [x] convert to fable
+  - [ ] test load in vscode -> works just like fake
+  - [ ] C#, F# context
+  - [ ] enable, disable menu items (and both are contextual)
+  - [ ] on enable, spawn tdds process, on disable [?kill?]
+  - [ ] run tdds, get version from rest api, print to [?toolwindow?]
+  - [ ] while restapi, show spinner
+  - [ ] publish as private beta?
+  - [ ] fillup readmd.md
 
-v clone project
-- change files, ids
-- test load in vscode -> works just like fake
-- convert to fable
-- enable, disable menu items
-- on enable, spawn tdds process, on disable [?kill?]
-- run tdds, get version from rest api, print to [?toolwindow?]
-- while restapi, show spinner
-- publish as private beta?
-- fillup readmd.md
-- CI [XXXXXX in readme.md]
-
-later
-fix icon
-C#, F# context
-solution loaded context
+- Later
+  - [ ] fix icon
+  - [ ] solution loaded context
