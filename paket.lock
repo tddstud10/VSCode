@@ -12,6 +12,14 @@ NUGET
       Node.js (>= 0.12.7)
     Octokit (0.21.1)
       Microsoft.Net.Http  - framework: net10, net11, net20, net30, net35, net40, net40-full
+GIT
+  remote: https://github.com/parthopdas/tddstud10.git
+     (f8a271c58c0fc28f27189032ef5f755a34348d9e)
+      build: build.cmd Build
+      os: windows
+     (f8a271c58c0fc28f27189032ef5f755a34348d9e)
+      build: build.cmd Build
+      os: mono
 GITHUB
   remote: fsharp/FAKE
     modules/Octokit/Octokit.fsx (8fd20ae42c996060bc8bedb821edfb50517cdd8b)

@@ -1,12 +1,12 @@
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module Ionide.VSCode.FSharp
+module TddStud10.VSCode.Package
 
 open Fable.Import.vscode
-open Ionide.VSCode.FSharp
+open TddStud10.VSCode.Package
 open Ionide.VSCode.Helpers
 
 let activate (_ : Disposable []) = 
-    LanguageService.start()
+    Engine.start()
     |> Promise.success (fun _ -> printf ">>> Just loaded TddStud10...")
     |> ignore
     commands.registerCommand 
@@ -16,4 +16,4 @@ let activate (_ : Disposable []) =
         ("tddStud10.disable", (fun () -> window.showInformationMessage "Disabled TddStud10" |> ignore) |> unbox) 
     |> ignore
 
-let deactivate (_ : Disposable []) = LanguageService.stop()
+let deactivate (_ : Disposable []) = Engine.stop()

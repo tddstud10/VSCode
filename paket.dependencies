@@ -1,5 +1,8 @@
 source https://nuget.org/api/v2
 
+git https://github.com/parthopdas/tddstud10.git master build:"build.cmd Build", OS: windows
+git https://github.com/parthopdas/tddstud10.git master build:"build.cmd Build", OS: mono
+
 nuget FAKE
 nuget Npm.js
 

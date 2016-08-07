@@ -1,7 +1,7 @@
-﻿namespace Ionide.VSCode.FSharp
+﻿namespace TddStud10.VSCode.Package
 
 [<ReflectedDefinition>]
-module DTO =
+module Contracts =
     type ParseRequest = { FileName : string; IsAsync : bool; Lines : string[]}
     type ProjectRequest = { FileName : string}
     type DeclarationsRequest = {FileName : string}

@@ -34,9 +34,9 @@
   - [x] test load in vscode -> works just like fake
   - [x] on enable, spawn tdds process
   - [x] enable, disable commands
-  - [ ] create sauve host for tddstud10 engine with getversion/time
+  - [x] create sauve host for tddstud10 engine with getversion/time
+  - [x] Test API using curl
   - [ ] rename + cleanup LanguageService 
-  - [ ] Test API using curl
   - [ ] while restapi, show spinner
   - [ ] publish as private beta?
   - [ ] on disable kill process

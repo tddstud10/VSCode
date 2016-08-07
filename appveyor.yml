@@ -2,7 +2,7 @@ os: Visual Studio 2015
 
 build_script:
   - cmd: .\build.cmd BuildPackage
-  - cmd: msbuild /t:rebuild /v:minimal TddStud10.VSCode.sln
+  - cmd: msbuild /t:rebuild /v:minimal /p:Configuration="Debug" /p:Platform="Any CPU" TddStud10.VSCode.sln
 
 test: off
 

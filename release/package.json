@@ -19,7 +19,7 @@
   "engines": {
     "vscode": "^0.10.0"
   },
-  "main": "./tddstud10",
+  "main": "./package",
   "contributes": {
     "commands": [
       {

@@ -14,7 +14,6 @@ open Fake.ReleaseNotesHelper
 open Fake.ZipHelper
 
 
-
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
 let gitOwner = "parthopdas"
@@ -76,6 +75,23 @@ Target "RunScript" (fun () ->
     run npmTool "run build" "release"
 )
 
+
+let releaseBin  = "release/bin"
+let tddStud10Build     = "paket-files/github.com/parthopdas/tddstud10/build"
+Target "CopyTddStud10Core" (fun _ ->
+    ensureDirectory releaseBin
+    CleanDir releaseBin
+
+    CopyRecursive tddStud10Build releaseBin true |> ignore
+
+    [ "*.pdb"; "*.vsix"; "Microsoft.VisualStudio.*"; "*.UnitTests.dll"; "*.xml"; "*.lastcodeanalysissucceeded"; "xunit.*"; "envdte*"; "galasoft*" ]
+    |> Seq.collect (fun it -> Directory.EnumerateFiles(releaseBin, it))
+    |> DeleteFiles
+
+    ["TestData"; "de"; "en"; "es"; "fr"; "it"; "ja"; "ko"; "ru"; "zh-hans"; "zh-hant" ]
+    |> Seq.map ((+) (releaseBin + "/"))
+    |> DeleteDirs
+)
 
 
 Target "InstallVSCE" ( fun _ ->
@@ -169,6 +185,7 @@ Target "Release" DoNothing
 
 "Clean"
 ==> "RunScript"
+==> "CopyTddStud10Core"
 ==> "Build"
 
 "Build"
@@ -178,7 +195,6 @@ Target "Release" DoNothing
 ==> "ReleaseGitHub"
 ==> "PublishToGallery"
 ==> "Release"
-
 
 "BuildPackage"
 ==> "TryPackage"

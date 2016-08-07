@@ -48,10 +48,9 @@
       <Paket>True</Paket>
       <Link>paket-files/Fable.Import.Axios.fs</Link>
     </Compile>
-    <Compile Include="Core/DTO.fs" />
-    <Compile Include="Core/LanguageService.fs" />
-    <Compile Include="Core/Project.fs" />
-    <Compile Include="TddStud10.fs" />
+    <Compile Include="Core\Contracts.fs" />
+    <Compile Include="Core\Engine.fs" />
+    <Compile Include="Package.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Fable.Core">
@@ -65,5 +64,4 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
   </ItemGroup>
-  <Import Project="$(FSharpTargetsPath)" />
 </Project>

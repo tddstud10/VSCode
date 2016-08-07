@@ -1,21 +1,19 @@
-﻿namespace Ionide.VSCode.FSharp
+﻿namespace TddStud10.VSCode.Package
 
-open System
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Import
 open Fable.Import.vscode
 open Fable.Import.Node
+
+open Contracts
 open Ionide.VSCode.Helpers
 
-open DTO
-open Ionide.VSCode.Helpers
-
-module LanguageService =
+module Engine =
     let ax =  Node.require.Invoke "axios" |>  unbox<Axios.AxiosStatic>
 
     let logRequests =
-        workspace.getConfiguration().get("FSharp.logLanguageServiceRequestsToConsole", false)
+        workspace.getConfiguration().get("TddStud10.logToConsole", false)
 
     let genPort () =
         let r = JS.Math.random ()
@@ -28,15 +26,15 @@ module LanguageService =
     let mutable private service : child_process_types.ChildProcess option =  None
 
     let request<'a, 'b> ep id  (obj : 'a) =
-        if logRequests then Browser.console.log ("[IONIDE-FSAC-REQ]", id, ep, obj)
+        if logRequests then Browser.console.log ("[TDDSTUD10-ENGINE-REQ]", id, ep, obj)
         ax.post (ep, obj)
         |> Promise.success(fun r ->
             try
                 let res = (r.data |> unbox<string[]>).[id] |> JS.JSON.parse |> unbox<'b>
                 if logRequests then
                     match res?Kind |> unbox with
-                    | "error" -> Browser.console.error ("[IONIDE-FSAC-RES]", id, ep, res?Kind, res?Data)
-                    | _ -> Browser.console.info ("[IONIDE-FSAC-RES]", id, ep, res?Kind, res?Data)
+                    | "error" -> Browser.console.error ("[TDDSTUD10-ENGINE-RES]", id, ep, res?Kind, res?Data)
+                    | _ -> Browser.console.info ("[TDDSTUD10-ENGINE-RES]", id, ep, res?Kind, res?Data)
                 if res?Kind |> unbox = "error" || res?Kind |> unbox = "info" then null |> unbox
                 else res
             with
@@ -102,7 +100,7 @@ module LanguageService =
 
     let start () =
         promise {
-            let path = (VSCode.getPluginPath "Ionide.Ionide-fsharp") + "/bin/FsAutoComplete.Suave.exe"
+            let path = (VSCode.getPluginPath "TddStud10.TddStud10-VSCode") + "/bin/R4nd0mApps.TddStud10.Engine.Server.exe"
             let child = if Process.isMono () then child_process.spawn("mono", [| path; string port|] |> ResizeArray) else child_process.spawn(path, [| string port|] |> ResizeArray)
             service <- Some child
             child.stderr?on $ ("data", fun n -> Browser.console.error (n.ToString())) |> ignore

@@ -21,14 +21,14 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TddStud10.VSCode", "src\Tdd
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Debug|x86.Build.0 = Debug|Any CPU
-		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Release|x86.ActiveCfg = Release|Any CPU
-		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Release|x86.Build.0 = Release|Any CPU
+		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D108213A-2369-4DAA-9F33-2353C5C9ED02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
