@@ -5,11 +5,10 @@
 // ${fileDirname}: the current opened file's dirname
 // ${fileExtname}: the current opened file's extension
 // ${cwd}: the current working directory of the spawned process
-
 {
-	"version": "0.1.0",
+    "version": "0.1.0",
     "isShellCommand": true,
-	"showOutput": "silent",
+    "showOutput": "silent",
     "osx": {
         "command": "${workspaceRoot}/build.sh"
     },
@@ -24,5 +23,4 @@
             "isBuildCommand": true
         }
     ]
-
 }

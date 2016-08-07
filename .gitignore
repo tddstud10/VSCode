@@ -5,6 +5,7 @@ release/bin_forge
 # Logs
 logs
 *.log
+npm-debug.log.*
 
 # Runtime data
 pids

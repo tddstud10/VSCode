@@ -1,6 +1,7 @@
 os: Visual Studio 2015
 
 build_script:
+  - cmd: msbuild /t:rebuild /v:min TddStud10.sln
   - cmd: .\build.cmd BuildPackage
 
 test: off

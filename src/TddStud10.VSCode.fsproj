@@ -51,21 +51,6 @@
     <Compile Include="Core/DTO.fs" />
     <Compile Include="Core/LanguageService.fs" />
     <Compile Include="Core/Project.fs" />
-    <Compile Include="Components/Linter.fs" />
-    <Compile Include="Components/Tooltip.fs" />
-    <Compile Include="Components/Autocomplete.fs" />
-    <Compile Include="Components/ParameterHints.fs" />
-    <Compile Include="Components/Definition.fs" />
-    <Compile Include="Components/References.fs" />
-    <Compile Include="Components/Highlights.fs" />
-    <Compile Include="Components/Symbols.fs" />
-    <Compile Include="Components/Rename.fs" />
-    <Compile Include="Components/WorkspaceSymbols.fs" />
-    <Compile Include="Components/Environment.fs" />
-    <Compile Include="Components/Fsi.fs" />
-    <Compile Include="Components/QuickInfo.fs" />
-    <Compile Include="Components/WebPreview.fs" />
-    <Compile Include="Components/Forge.fs" />
     <Compile Include="TddStud10.fs" />
   </ItemGroup>
   <ItemGroup>

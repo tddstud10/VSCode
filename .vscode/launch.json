@@ -3,11 +3,13 @@
 	"version": "0.1.0",
 	"configurations": [
 		{
-            "preLaunchTask": "Default",
+			"preLaunchTask": "Default",
 			"name": "Launch Extension",
 			"type": "extensionHost",
 			"runtimeExecutable": "${execPath}",
-			"args": ["--extensionDevelopmentPath=${workspaceRoot}/release" ],
+			"args": [
+				"--extensionDevelopmentPath=${workspaceRoot}/release"
+			],
 			"stopOnEntry": false,
 			"request": "launch"
 		}

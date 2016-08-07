@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/XXXXXX/branch/master?svg=true)](https://ci.appveyor.com/project/parthopdas/tddstud10/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/u896lshovkdh1cwc/branch/master?svg=true)](https://ci.appveyor.com/project/parthopdas/tddstud10-vscode/branch/master)
 [![Join the chat at https://gitter.im/parthopdas/tddstud10](https://badges.gitter.im/parthopdas/tddstud10.svg)](https://gitter.im/parthopdas/tddstud10?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > **Test Driven Development Studio - An environment for practicing Kent Beck style Test Driven Development.**
@@ -23,21 +23,26 @@
   - Open source alternative to nCrunch
   - Eventually not just unit tests - but a collection of facilities that makes TDD a joy! e.g. TODO list, hotspot analysis, etc.
 
+
 ---
+- TODO
+  - [x] clone project
+  - [x] CI [XXXXXX in readme.md]
+  - [x] change files, ids
+  - [x] convert to fable
+  - [x] Loaded when enable tdd is hit
+  - [x] test load in vscode -> works just like fake
+  - [x] on enable, spawn tdds process
+  - [x] enable, disable commands
+  - [ ] create sauve host for tddstud10 engine with getversion/time
+  - [ ] rename + cleanup LanguageService 
+  - [ ] Test API using curl
+  - [ ] while restapi, show spinner
+  - [ ] publish as private beta?
+  - [ ] on disable kill process
+  - [ ] fillup readmd.md
 
-v clone project
-- change files, ids
-- test load in vscode -> works just like fake
-- convert to fable
-- enable, disable menu items
-- on enable, spawn tdds process, on disable [?kill?]
-- run tdds, get version from rest api, print to [?toolwindow?]
-- while restapi, show spinner
-- publish as private beta?
-- fillup readmd.md
-- CI [XXXXXX in readme.md]
-
-later
-fix icon
-C#, F# context
-solution loaded context
+- Later
+  - [ ] tddstud10 should load when solution is loaded
+  - [ ] fix icon
+  - [ ] make enable/disable command contextual (i.e. enable should not be available when enabled)

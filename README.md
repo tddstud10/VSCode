@@ -30,15 +30,19 @@
   - [x] CI [XXXXXX in readme.md]
   - [x] change files, ids
   - [x] convert to fable
-  - [ ] test load in vscode -> works just like fake
-  - [ ] C#, F# context
-  - [ ] enable, disable menu items (and both are contextual)
-  - [ ] on enable, spawn tdds process, on disable [?kill?]
-  - [ ] run tdds, get version from rest api, print to [?toolwindow?]
+  - [x] Loaded when enable tdd is hit
+  - [x] test load in vscode -> works just like fake
+  - [x] on enable, spawn tdds process
+  - [x] enable, disable commands
+  - [ ] create sauve host for tddstud10 engine with getversion/time
+  - [ ] rename + cleanup LanguageService 
+  - [ ] Test API using curl
   - [ ] while restapi, show spinner
   - [ ] publish as private beta?
+  - [ ] on disable kill process
   - [ ] fillup readmd.md
 
 - Later
+  - [ ] tddstud10 should load when solution is loaded
   - [ ] fix icon
-  - [ ] solution loaded context
+  - [ ] make enable/disable command contextual (i.e. enable should not be available when enabled)

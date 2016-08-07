@@ -23,12 +23,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "tddstud10.Enable",
-        "title": "TddStud10: Enable"
+        "command": "tddStud10.enable",
+        "title": "Enable TddStud10"
       },
       {
-        "command": "tddStud10.Disable",
-        "title": "TddStud10: Disable"
+        "command": "tddStud10.disable",
+        "title": "Disable TddStud10"
       }
     ],
     "outputChannels": [
@@ -36,12 +36,12 @@
     ],
     "keybindings": [
       {
-        "command": "tddstud10.Enable",
+        "command": "tddStud10.enable",
         "key": "ctrl+shift+alt+E",
         "mac": "ctrl+shift+alt+E"
       },
       {
-        "command": "tddstud10.Enable",
+        "command": "tddStud10.disable",
         "key": "ctrl+shift+alt+D",
         "mac": "ctrl+shift+alt+D"
       }
@@ -50,7 +50,7 @@
       "type": "object",
       "title": "TddStud10 configuration",
       "properties": {
-        "FSharp.logToConsole": {
+        "TddStud10.logToConsole": {
           "type": "boolean",
           "default": false,
           "description": "Send TddStud10 logs to the developer tools console"
@@ -59,11 +59,7 @@
     }
   },
   "activationEvents": [
-    "onLanguage:fsharp",
-    "onLanguage:csharp"
-  ],
-  "extensionDependencies": [
-    "vscode.fsharp"
+    "*"
   ],
   "scripts": {
     "build": "fable ../src/TddStud10.VSCode.fsproj -s -o ../release -m commonjs --verbose"
