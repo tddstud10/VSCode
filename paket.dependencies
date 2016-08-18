@@ -1,12 +1,11 @@
-source https://nuget.org/api/v2
-
-git https://github.com/parthopdas/tddstud10.git master build:"build.cmd Build", OS: windows
-git https://github.com/parthopdas/tddstud10.git master build:"build.cmd Build", OS: mono
-
-nuget FAKE
-nuget Npm.js
-
 github fsharp/FAKE modules/Octokit/Octokit.fsx
 github Ionide/ionide-vscode-helpers Fable.Import.VSCode.fs
 github Ionide/ionide-vscode-helpers Helpers.fs
 github Ionide/ionide-vscode-helpers Fable.Import.Axios.fs
+
+source https://nuget.org/api/v2
+nuget FAKE
+nuget Npm.js
+
+source https://ci.appveyor.com/nuget/tddstud10-x2rq3lcwiqxa
+nuget TddStud10.Core < 172.0.0

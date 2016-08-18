@@ -7,7 +7,7 @@ open Ionide.VSCode.Helpers
 
 let activate (_ : Disposable []) = 
     Engine.start()
-    |> Promise.success (fun _ -> printf ">>> Just loaded TddStud10...")
+    |> Promise.map (fun _ -> printf ">>> Just loaded TddStud10...")
     |> ignore
     commands.registerCommand 
         ("tddStud10.enable", (fun () -> window.showInformationMessage "Enabled TddStud10" |> ignore) |> unbox) 

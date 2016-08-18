@@ -77,20 +77,12 @@ Target "RunScript" (fun () ->
 
 
 let releaseBin  = "release/bin"
-let tddStud10Build     = "paket-files/github.com/parthopdas/tddstud10/build"
+let tddStud10CoreDir = "./packages/TddStud10.Core/bin"
 Target "CopyTddStud10Core" (fun _ ->
     ensureDirectory releaseBin
     CleanDir releaseBin
 
-    CopyRecursive tddStud10Build releaseBin true |> ignore
-
-    [ "*.pdb"; "*.vsix"; "Microsoft.VisualStudio.*"; "*.UnitTests.dll"; "*.xml"; "*.lastcodeanalysissucceeded"; "xunit.*"; "envdte*"; "galasoft*" ]
-    |> Seq.collect (fun it -> Directory.EnumerateFiles(releaseBin, it))
-    |> DeleteFiles
-
-    ["TestData"; "de"; "en"; "es"; "fr"; "it"; "ja"; "ko"; "ru"; "zh-hans"; "zh-hant" ]
-    |> Seq.map ((+) (releaseBin + "/"))
-    |> DeleteDirs
+    XCopy tddStud10CoreDir releaseBin
 )
 
 

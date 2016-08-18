@@ -65,13 +65,14 @@
     "build": "fable ../src/TddStud10.VSCode.fsproj -s -o ../release -m commonjs --verbose"
   },
   "dependencies": {
-    "axios": "^0.12.0",
+    "axios": "^0.13.1",
     "fable-core": "*",
     "toml": "*",
     "xhr2": "*"
   },
   "devDependencies": {
-    "vscode": "*",
-    "fable-compiler": "*"
+    "fable-compiler": "*",
+    "mocha": "^3.0.2",
+    "vscode": "^0.11.15"
   }
 }
