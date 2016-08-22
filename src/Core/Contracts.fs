@@ -2,6 +2,10 @@
 
 [<ReflectedDefinition>]
 module Contracts =
+    type RunRequest = 
+        { SolutionPath : string
+          Delay : int }
+
     type ParseRequest = { FileName : string; IsAsync : bool; Lines : string[]}
     type ProjectRequest = { FileName : string}
     type DeclarationsRequest = {FileName : string}
@@ -120,6 +124,7 @@ module Contracts =
 
 
     type Result<'T> = {Kind : string; Data : 'T}
+    type RunResult = Result<string>
     type CompilerLocationResult = Result<CompilerLocation>
     type HelptextResult = Result<Helptext>
     type CompletionResult = Result<Completion[]>

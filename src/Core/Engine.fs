@@ -1,4 +1,4 @@
-﻿namespace TddStud10.VSCode.Package
+namespace TddStud10.VSCode.Package
 
 open Fable.Core
 open Fable.Core.JsInterop
@@ -13,7 +13,7 @@ module Engine =
     let ax =  Node.require.Invoke "axios" |>  unbox<Axios.AxiosStatic>
 
     let logRequests =
-        workspace.getConfiguration().get("TddStud10.logToConsole", false)
+        workspace.getConfiguration().get("TddStud10.logToConsole", true)
 
     let genPort () =
         let r = JS.Math.random ()
@@ -45,6 +45,10 @@ module Engine =
             | ex ->
                 null |> unbox
         )
+
+    let run () =
+        { RunRequest.SolutionPath = @"c:\a\b\sln.sln"; Delay = 10 }
+        |> request (url "run") 0
 
     let project s =
         {ProjectRequest.FileName = s}
@@ -135,9 +139,9 @@ module Engine =
         )
         |> Promise.onFail (fun _ ->
             if Process.isMono () then
-                "Failed to start language services. Please check if mono is in PATH"
+                "Failed to start engine. Please check if mono is in PATH and turn on TddStud10.logToConsole setting to see what is going on."
             else
-                "Failed to start language services. Please check if Microsoft Build Tools 2013 are installed"
+                "Failed to start engine. Please turn on TddStud10.logToConsole setting to see what is going on."
             |> vscode.window.showErrorMessage
             |> ignore)
 
